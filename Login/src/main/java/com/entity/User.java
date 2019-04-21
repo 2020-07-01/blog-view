@@ -2,26 +2,24 @@ package com.entity;
 
 /**
  * @ClassName:  User   
- * @Description:用户实体类
+ * @Description:用户实体类：包含三个属性：id，name，password
  * @author: caiji
  * @date: 2019年4月20日 下午10:44:04
  */
 public class User {
 
 	private int id;
-	private String name;
+	private String username;
 	private String password;
-	private String email;
 
 	public User() {
 
 	}
 
-	public User(int id, String name, String password, String email) {
+	public User(int id, String username, String password) {
 		this.id = id;
-		this.name = name;
+		this.username = username;
 		this.password = password;
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -30,14 +28,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public int getId() {
@@ -49,11 +39,11 @@ public class User {
 	}
 
 	public String getName() {
-		return name;
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String username) {
+		this.username = username;
 	}
 
 }
