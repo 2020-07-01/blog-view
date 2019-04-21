@@ -4,9 +4,16 @@
 
 <mapper namespace="com.dao.UserMapper">
 
-    <!-- 根据用户名和密码查询 -->
-    <select id="findByUserName"  resultType="User">
-     	select * from user where name=#{name}
+	<!-- 添加用户 此处使用JDBC方式返回自增主键的值:需要在数据库内部进行设置 
+		useGeneratedKeys="true":Mybatis的会使用JDBC的jdbc的getGeneratedKeys方法获取有数据库内部生成的主键 
+		keyPropery="id":将获取到的主键赋值给id -->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="user" >
+     	 insert into user (username,password) values (#{username},#{password})
+    </insert>
+    
+    <!-- 通过用户名查询用户 -->
+    <select id="selectPasswordByName" parameterType="String" resultType="user">
+    	select * from user where username = #{name}
     </select>
    
 </mapper>

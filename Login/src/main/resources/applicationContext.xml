@@ -17,40 +17,46 @@
             http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 
- 
-
-	<!-- 配置数据连接池：使用dbcp数据源 -->
+	<!-- 配置整合mybatis过程： -->
+	<!-- 加载数据库参数文件 -->
+	<context:property-placeholder location = "classpath:jdbc.properties"/>
+	<!-- 配置数据库连接池 -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
+		
+		<!-- 配置连接池属性 -->
 		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
+			value="${jdbc.driver}" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/login" />
-		<property name="username" value="root" />
-		<property name="password" value="123456" />
+			value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+		<!-- 配置连接池的私有属性 -->
+		<property name="maxActive" value="5"/><!-- 最大活动连接数 -->
+		<property name="initialSize" value="5"/><!-- 初始化链接数 -->
+		<property name="maxWait" value="3000"/><!-- 从池中取链接的最大等待时间 -->
+		
 	</bean>
-
 
 	<!-- 配置sqlSessionFactory -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<!--dataSource属性指定要用到的连接池 -->
+		<!-- 注入连接池 -->
 		<property name="dataSource" ref="dataSource" />
-		<!--configLocation属性指定mybatis的核心配置文件 -->
+		<!--注入mybatis核心配置文件 -->
 		<property name="configLocation"
 			value="classpath:mybatis-config.xml" />
 	</bean>
 
 
-
-	<!-- 通过扫描的方式配置Mapper -->
+	<!-- 配置扫描dao接口，实现动态注入到容器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	<property name="basePackage" value="com.dao" />
-	<property name="SqlSessionFactoryBeanName"
-		value="sqlSessionFactory" />
-
-	<!-- 指定标注才扫描成Mapper 此时需要在dao接口上加注解@Repository -->
-	 <property name="annotationClass" 
-		value="org.springframework.stereotype.Repository"/> 
+		<property name="basePackage" value="com.dao" />
+		<property name="SqlSessionFactoryBeanName"
+			value="sqlSessionFactory" />
+		<!-- 指定标注才扫描成Mapper 此时需要在dao接口上加注解@Repository -->
+		<property name="annotationClass"
+			value="org.springframework.stereotype.Repository" />
 	</bean>
 </beans> 
