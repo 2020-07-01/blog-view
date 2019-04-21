@@ -10,36 +10,48 @@ import com.entity.User;
 public class UserServiceImpl implements UserService {
 
 	//注入UserMapper接口
-
 	@Autowired
 	private UserMapper userMapper;
 
-	/**
-		* 登录
-		* 根据用户名和密码进行查询
-		*/
-
-	public void print() {
-		System.out.println(userMapper);
-	}
-	@Override
-	public User login(String username, String password) {
-		return userMapper.findByUserNameAndPassword(username, password);
-	}
-
-	/**
-		* 注册
-		* 增加用户
-		*/
-
-	@Override
-	public void register(User user) {
-		userMapper.addUser(user);
+	/*
+	 * @Description:通过用户名和密码进行注册
+	 * @param username：用户名
+	 * @param password：用户密码
+	 * 	在注册之前先检查此用户是否已经注册过
+	 */
+	public boolean registerUser(String username, String password) {
+		//进行注册之前先检查此用户是否已经注册过了
+		User user = userMapper.selectPasswordByName(username);
+		if (user == null) {
+			userMapper.addUser(username, password);
+			return true;//表示注册成功
+		} else
+			return false;//表示用户名已存在，注册失败
 	}
 
-	@Override
-	public User findByUserName(String username) {
+	/*
+	 *	进行登陆验证并返回代号
+	 *	1：代表用户名不存在
+	 *	2：代表用户名或者密码错误
+	 *	3：代表用户登陆成功
+	 */
+	public int isLegal(String username, String password) {
+		User user = userMapper.selectPasswordByName(username);
 
-		return userMapper.findByUserName(username);
+		if (user == null) {
+			return 1;
+		} else {
+			String password1 = user.getPassword();
+			if (password != null && password.equals(password1)) {
+				return 3;
+			} else {
+				return 2;
+			}
+		}
+
 	}
+	
+	
+	
+
 }
