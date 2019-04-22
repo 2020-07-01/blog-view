@@ -15,5 +15,10 @@
     <select id="selectPasswordByName" parameterType="String" resultType="user">
     	select * from user where username = #{name}
     </select>
+
+	<!-- 注销用户 -->
+	<delete id="deleteUserByName" parameterType="int">
+		delete from user where id = #{id}
+ 	</delete>    
    
 </mapper>
