@@ -14,11 +14,12 @@
 <!-- 信息更新 -->
 <script type="text/javascript">
 	 
-	function login() {
-		//jQuery写法
+	function update() {
 		//获取用户输入
 		var name = $("#name").val();
 		var password = $("#password").val();
+		var newpassword= $("#newpassword").val();
+		
 		if (!name) {
 			alert("用户名必填!");
 			$("#name").focus();//获取焦点
@@ -33,10 +34,11 @@
 		$.ajax({
 			//几个参数需要注意一下
 			type : "post",//提交方法
-			url : "/login/login",//地址
+			url : "/login/updatePassword",//地址
 			data : {
 				"name" : name,
-				"password" : password
+				"password" : password,
+				"newpassword" : newpassword
 			},
 			dataType : "json",//预期的服务器响应的类型
 
@@ -46,15 +48,16 @@
 				var s = JSON.stringify(result);
 
 				if (s == "3") {
-					//登陆成功后进入到主页面
-					window.location.href = "/login/welcome";
+					 //密码更新成功跳转至登陆界面
+					window.location.href = "/login/index";
 				}
 				if (s == "2") {
-					alert("登陆失败，账号或者密码错误!");
+					alert("新密码与旧密码不能重复!");
 				}
+				
 				if (s == "1") {
 					//此时直接跳到到注册界面
-					alert("账号不存在，请注册!");
+					alert("账号或者密码错误!");
 				}
 				;
 			},
@@ -85,12 +88,9 @@
 	</nav>
 
 
-
-
-
-	<!-- 更新页面 -->
+	<!-- 修改用户密码 -->
 	<div style="height: 3em; line-height: 9em; text-align: center">
-		<h3>修 改 信 息</h3>
+		<h3>修 改 密 码</h3>
 	</div>
 	<form name="loginForm" style="margin-top: 10px; text-align: center">
 		<!-- 登陆账号 -->
@@ -100,18 +100,24 @@
 				style="display: inline; width: 200px;" autocomplete="off"
 				placeholder="用户名" /><br>
 		</div>
-
-		<!-- 登陆密码 -->
+		
+		<!-- 旧密码 -->
 		<div class="form-group">
-			<label for="password">新密码：</label> <input type="password"
-				class="form-control" id="password"
-				style="display: inline; width: 200px;" autocomplete="off"
+			<label for="password">密　码：</label> 
+			<input type="password" class="form-control" id="password" style="display: inline; width: 200px;" autocomplete="off"
+				placeholder="密码" /><br>
+		</div>
+		
+		<!-- 新密码 -->
+		<div class="form-group">
+			<label for="password">新密码：</label> 
+			<input type="password" class="form-control" id="newpassword" style="display: inline; width: 200px;" autocomplete="off"
 				placeholder="密码" /><br>
 		</div>
 		 
 		<!-- 登陆按钮 -->
 		<div class="form-group">
-			<button type="submit" class="btn btn-default" onclick="login()">确认</button>
+			<button type="submit" class="btn btn-default" onclick="update()">确认</button>
 			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<button type="reset" class=" btn btn-default" >重置</button>
 

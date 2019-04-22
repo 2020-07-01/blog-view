@@ -17,7 +17,6 @@
 		};
 	</script>
 
-
 	<!-- 点击注销按钮注销页面显示 -->
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -29,58 +28,6 @@
 	</script>
  
 	
-</head>
-<body onload="myFunction()"><!-- 加载页面时执行 -->
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">菜鸡加油</a>
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-						修改信息</a></li>
-				<li><a  href="#" id="logout"><span class="glyphicon glyphicon-user"></span>
-						注销</a></li>
-				<li><a id="zhuxiao" href="#"><span
-						class="glyphicon glyphicon-log-in"></span>退出</a></li>
-			</ul>
-		</div>
-	</nav>
-
-<H2 style="margin-top: 10px; text-align: center" >欢迎来到主页!</H2>
-
-	<!-- 注销账号 -->
-	<!-- 注销时的账号只能是当前账号 -->
-	<form id="form1" name="loginForm" style="margin-top: 100px; text-align: center" >
-		<!-- 账号 -->
-		<div class="form-group">
-			<label for="name">用户名：</label> <input type="text"
-				class="form-control" id="name"
-				style="display: inline; width: 200px;" autocomplete="off"
-				placeholder="用户名" /><br>
-		</div>
-
-		<!-- 密码 -->
-		<div class="form-group">
-			<label for="password">密　码：</label> <input type="password"
-				class="form-control" id="password"
-				style="display: inline; width: 200px;" autocomplete="off"
-				placeholder="密码" /><br>
-		</div>
-
-
-		<!--  -->
-		<div class="form-group">
-			<button type="submit" class="btn btn-default" onclick="logout()">注销</button>
-			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			
-			<button type="submit" class=" btn btn-default"
-				onclick="window.location.href='/login/toregister'">取消</button>
-		</div>
-	</form>
-
-
-
 	<!-- 点击表单注销按钮响应操作 -->
 	<script type="text/javascript">
 		function logout() {
@@ -132,16 +79,61 @@
 		}
 	</script>
 
-	<!-- 
+ 
+	
+	
+</head>
+<body onload="myFunction()"><!-- 加载页面时执行 -->
 
-	实现所有的操作都在主界面中进行
-	1.实现注销功能
-	2.实现更新用户信息的功能
-	3.了解重定向
-	4.界面异步与增加
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">菜鸡加油</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/login/toUpdatePassword"><span class="glyphicon glyphicon-user"></span>
+						修改信息</a></li>
+				<li><a  href="#" id="logout"><span class="glyphicon glyphicon-user"></span>
+						注销</a></li>
+				<li><a id="zhuxiao" href="/login/index"><span
+						class="glyphicon glyphicon-log-in"></span>退出</a></li>
+			</ul>
+		</div>
+	</nav>
 
- -->
+	<H2 style="margin-top: 10px; text-align: center" >欢迎来到主页!</H2>
 
+	<!-- 注销当前账号 -->
+	<form id="form1" name="loginForm" style="margin-top: 100px; text-align: center" >
+		<!-- 账号 -->
+		<div class="form-group">
+			<label for="name">用户名：</label> <input type="text"
+				class="form-control" id="name"
+				style="display: inline; width: 200px;" autocomplete="off"
+				placeholder="用户名" /><br>
+		</div>
+
+		<!-- 密码 -->
+		<div class="form-group">
+			<label for="password">密　码：</label> <input type="password"
+				class="form-control" id="password"
+				style="display: inline; width: 200px;" autocomplete="off"
+				placeholder="密码" /><br>
+		</div>
+
+
+		<!--注销当前用户 -->
+		<div class="form-group">
+			<button type="submit" class="btn btn-default" onclick="logout()">注销</button>
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			
+			<button type="submit" class=" btn btn-default"
+				onclick="window.location.href='/login/toregister'">取消</button>
+		</div>
+	</form>
+
+
+ 
 
 	 
 
