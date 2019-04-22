@@ -55,7 +55,7 @@ public class UserController {
 	
 	//登陆成功界面
 	@RequestMapping("/welcome")
-	public String welcome() {
+	public String welcome( ) {
 		return "welcome";
 	}
   
@@ -116,11 +116,24 @@ public class UserController {
 	
 	/*
 	 * @Description:进入更新页面 
+	 */
+	
+	@RequestMapping("/toUpdatePassword")
+	public  String toUpdatePassword() {
+		return "update";
+	}
+	
+	/*
+	 * @Description:修改密码
 	 * @return
 	 */
-	public String update(String name,String newpassword) {
-		
-		return "update";
+	@ResponseBody
+	@RequestMapping("/updatePassword")
+	public String updatePassword(String name,String password,String newpassword) {
+		System.out.println(name+" "+password+" "+newpassword);
+		String p = userServiceImpl.updateMessage(name, password, newpassword);
+		System.out.println(p);
+		return p;
 	}
 	
 }
