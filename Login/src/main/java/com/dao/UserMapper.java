@@ -1,5 +1,6 @@
 package com.dao;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import com.entity.User;
@@ -17,11 +18,18 @@ public interface UserMapper {
 
 	/*
 	 * @Description:根据用户名查询密码进行登陆验证 
-	 * @param name：用户名
-	 * @return：返回用户的数据
 	 */
 	public User selectPasswordByName(String name);
 	
+	/*
+	 * @Description: 通过主键id删除信息
+	 */
+	public int deleteUserByName(int id);
+	
+	/*
+	 * @Description:更改用户密码
+	 */
+	public int updateUserByName(int name);
 	
 	
 
