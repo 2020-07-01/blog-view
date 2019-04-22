@@ -56,11 +56,13 @@ public class UserController {
 	//登陆成功界面
 	@RequestMapping("/welcome")
 	public String welcome() {
-		return "success";
+		return "welcome";
 	}
-
   
-	 
+	/*
+	 * @Description:进入注册页面 
+	 * @return
+	 */
 	@RequestMapping("/toregister")
 	public String toregister() {
 		return "register";
@@ -92,5 +94,33 @@ public class UserController {
 	}
 	 
 	
-
+	/*
+	 * @Description: 用户注销
+	 * @param name：用户名
+	 * @param password：用户密码
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/logout")
+	public String logout(String name,String password) {
+		boolean p = userServiceImpl.logout(name, password);
+		 		if(p)
+		{
+			return "true";
+		}
+		else
+		{
+			return "false";
+		}
+	}
+	
+	/*
+	 * @Description:进入更新页面 
+	 * @return
+	 */
+	public String update(String name,String newpassword) {
+		
+		return "update";
+	}
+	
 }
