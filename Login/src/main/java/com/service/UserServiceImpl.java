@@ -78,9 +78,26 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	public void updateMessage(String name, String password) {
+	public String updateMessage(String name, String password,String newpassword) {
 		
 		User user = userMapper.selectPasswordByName(name);
+		//如果用户不存在
+		if(user == null)
+		{
+			return "1";
+		}
+		//如果用户存在
+		else {
+			//如果新密码与旧密码相同
+			if(newpassword.equals(password))
+			{
+				return "2";
+			}
+			else {
+				Integer p = userMapper.updateUserByName(name,newpassword);
+				return "3";
+			}
+		}
 	}
 
 }

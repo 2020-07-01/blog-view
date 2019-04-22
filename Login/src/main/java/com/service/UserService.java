@@ -27,6 +27,6 @@ public interface UserService {
 	 */
 	public boolean logout(String name,String password);
 	
-	public void updateMessage(String name,String password);
+	public String updateMessage(String name,String password,String newpassword);
 
 }
