@@ -49,7 +49,6 @@
 		}
 		
 		$.ajax({
-			async : false,
 			type : "post",//提交方法
 			url : "/login/register",//地址
 			data :  datajson,
@@ -62,6 +61,7 @@
 				if (s == "true") {
 					//登陆成功后进入到登陆
 					window.location.href = "/login/index";
+				 
 				}
 				if (s == "false") {
 					alert("用户名已经存在，请重新输入!");
@@ -111,7 +111,7 @@
 
 		<!-- 登陆按钮 -->
 		<div class="form-group">
-			<button type="submit" class= "btn btn-default" onclick="register()">确认注册</button>
+			<button type="button" class= "btn btn-default" onclick="register()">确认注册</button>
 			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 			<button type="reset" class=" btn btn-default" >重置</button>
 		  

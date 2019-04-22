@@ -4,14 +4,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>登陆首页</title>
+<meta charset="UTF-8">
+<title>登陆首页</title>
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 引入bootstrap3.3.7 -->
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+<!-- 引入jQuery1.14.0插件 -->
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+
+<!-- 用户登陆验证 -->
 <script type="text/javascript">
 	/*  该function用于用户登陆的验证，其功能如下：
 		1.当用户账号为空时，警告：用户名必填！
@@ -33,7 +46,7 @@
 			$("#password").focus();//获取焦点
 			return;
 		}
-		
+
 		$.ajax({
 			//几个参数需要注意一下
 			type : "post",//提交方法
@@ -68,6 +81,7 @@
 		});
 	}
 </script>
+ 
 
 </head>
 <body>
@@ -78,8 +92,8 @@
 				<a class="navbar-brand" href="#">菜鸡加油</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/login/toregister"><span class="glyphicon glyphicon-user"></span>
-						用户注册</a></li>
+				<li><a href="/login/toregister"><span
+						class="glyphicon glyphicon-user"></span> 用户注册</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -89,20 +103,22 @@
 
 
 	<div style="height: 3em; line-height: 9em; text-align: center">
-		<h3>登　录</h3>
+		<h3>登 录</h3>
 	</div>
-	<form name="loginForm" style="margin-top: 10px; text-align: center">
+	<form name="loginform" id="loginform" class="cmxform"
+		style="margin-top: 10px; text-align: center">
 		<!-- 登陆账号 -->
 		<div class="form-group">
-			<label for="name">用户名：</label> <input type="text"
-				class="form-control" id="name"
-				style="display: inline; width: 200px;" autocomplete="off"
-				placeholder="用户名" /><br>
+			<label for="name">用户名：</label> 
+			<input type="text" class="form-control" id="name" name="name"style="display: inline; width: 200px;" autocomplete="off"
+				placeholder="用户名" />
+			<br>
 		</div>
 
 		<!-- 登陆密码 -->
 		<div class="form-group">
-			<label for="password">密　码：</label> <input type="password"
+			<label for="password">密　码：</label> 
+			<input type="password"
 				class="form-control" id="password"
 				style="display: inline; width: 200px;" autocomplete="off"
 				placeholder="密码" /><br>
@@ -110,13 +126,22 @@
 
 		<!-- 登陆按钮 -->
 		<div class="form-group">
-			<button type="submit" class="btn btn-default" onclick="login()">登录</button>
+			 <button type="button" class="btn btn-default" onclick="login()">登录</button>  
 			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			<button type="submit" class=" btn btn-default"
+			<button type="button" class=" btn btn-default"
 				onclick="window.location.href='/login/toregister'">注册</button>
 
 		</div>
 	</form>
+
+
+
+ 
+
+
+ 
+
+
 
 </body>
 </html>

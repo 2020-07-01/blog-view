@@ -52,7 +52,6 @@
 				//几个参数需要注意一下
 				type : "post",//提交方法
 				url : "/login/logout",//地址
-				async : false,
 				data : {//传动json对象
 					"name" : name,
 					"password" : password
@@ -124,7 +123,7 @@
 
 		<!--注销当前用户 -->
 		<div class="form-group">
-			<button type="submit" class="btn btn-default" onclick="logout()">注销</button>
+			<button type="button" class="btn btn-default" onclick="logout()">注销</button>
 			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			
 			<button type="submit" class=" btn btn-default"

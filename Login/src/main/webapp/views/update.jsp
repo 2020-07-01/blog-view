@@ -117,7 +117,7 @@
 		 
 		<!-- 登陆按钮 -->
 		<div class="form-group">
-			<button type="submit" class="btn btn-default" onclick="update()">确认</button>
+			<button type="button" class="btn btn-default" onclick="update()">确认</button>
 			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<button type="reset" class=" btn btn-default" >重置</button>
 
