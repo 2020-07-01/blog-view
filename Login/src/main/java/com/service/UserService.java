@@ -21,5 +21,12 @@ public interface UserService {
 	 * @return:返回代号表示查询状态
 	 */
 	public int isLegal(String username, String password) ;
+	
+	/*
+	 * @Description:注销用户 
+	 */
+	public boolean logout(String name,String password);
+	
+	public void updateMessage(String name,String password);
 
 }

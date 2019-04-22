@@ -50,8 +50,37 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
+	 
 	
-	
-	
+	/*
+	 *	进行注销验证
+	 */
+	public boolean logout(String name, String password) {
+		//根据name查询输入的密码是否正确
+		User user = userMapper.selectPasswordByName(name);
+		//如果没有此用户返回false
+		if (user == null) {
+			return false;
+		}
+		
+		//如果用户存在:比较密码是否正确
+		else {
+			String password1 = user.getPassword();
+			//如果密码正确返回true，否则返回false
+			if (password.equals(password1)) {
+				int id = user.getId();
+				int p = userMapper.deleteUserByName(id);
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+	}
+
+	public void updateMessage(String name, String password) {
+		
+		User user = userMapper.selectPasswordByName(name);
+	}
 
 }
