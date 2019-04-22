@@ -130,9 +130,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/updatePassword")
 	public String updatePassword(String name,String password,String newpassword) {
-		System.out.println(name+" "+password+" "+newpassword);
+		 
 		String p = userServiceImpl.updateMessage(name, password, newpassword);
-		System.out.println(p);
+		 
 		return p;
 	}
 	
