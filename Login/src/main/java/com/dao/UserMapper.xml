@@ -19,6 +19,13 @@
 	<!-- 注销用户 -->
 	<delete id="deleteUserByName" parameterType="int">
 		delete from user where id = #{id}
- 	</delete>    
+ 	</delete>  
+ 	
+ 	<!-- 修改密码 -->
+	<update id="updateUserByName"  >
+		UPDATE user 
+		SET password = #{password} 
+		WHERE username = #{username}
+	</update>  
    
 </mapper>

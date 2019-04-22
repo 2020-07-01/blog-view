@@ -29,7 +29,7 @@ public interface UserMapper {
 	/*
 	 * @Description:更改用户密码
 	 */
-	public int updateUserByName(int name);
+	public int  updateUserByName(@Param("username") String username, @Param("password") String newpassword);
 	
 	
 
