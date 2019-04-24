@@ -48,6 +48,7 @@
 			return;
 		}
 		
+		
 		$.ajax({
 			type : "post",//提交方法
 			url : "/login/register",//地址
