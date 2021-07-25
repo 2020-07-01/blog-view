@@ -12,7 +12,7 @@
 
 	<!-- 版本号 -->
 	<properties>
-		<spring-mvc.version>4.3.5.RELEASE</spring-mvc.version>
+		<spring-mvc.version>5.2.1.RELEASE</spring-mvc.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<jstl.version>1.2</jstl.version>
 		<jdk.version>1.8</jdk.version>
